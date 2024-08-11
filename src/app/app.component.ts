@@ -10,13 +10,13 @@ export class AppComponent {
   items = [
     {
       label: 'Customers',
-      icon: 'pi pi-fw pi-home',
-      routerLink: 'customer'
+      icon: 'pi pi-user',
+      routerLink: 'customers'
     },
     {
       label: 'Products',
-      icon: 'pi pi-fw pi-chart-bar',
-      routerLink: 'product'
+      icon: 'pi pi-shopping-bag',
+      routerLink: 'products'
     }
   ] 
 }
