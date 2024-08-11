@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sales-statistics';
+  items = [
+    {
+      label: 'Customers',
+      icon: 'pi pi-fw pi-home',
+      routerLink: 'customer'
+    },
+    {
+      label: 'Products',
+      icon: 'pi pi-fw pi-chart-bar',
+      routerLink: 'product'
+    }
+  ] 
 }
