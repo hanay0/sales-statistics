@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { CustomersComponent } from './customers/customers.component';
 import { ProductsComponent } from './products/products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ProductsComponent } from './products/products.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TabMenuModule 
+    HttpClientModule,
+    TabMenuModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

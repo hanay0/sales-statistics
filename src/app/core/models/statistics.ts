@@ -10,5 +10,20 @@ export interface Statistics {
                 score: number;
             }
         ]
+    };
+    customerSatisfaction: {
+        averageScore: number;
+        monthlyScores: [
+            {
+                month: string;
+                score: number;
+            }
+        ];
+        byRegion: [
+            {
+                regionName: string;
+                regionScore: number;
+            }
+        ]
     }
 }
