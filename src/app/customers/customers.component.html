@@ -6,16 +6,21 @@
                 <p>This statistics are about customers satisfaction filtered by average score, monthly scores and satisfaction by region</p>
             </div>
             <div class="row">
-                <div class="col-12" *ngIf="statistics">
+                <div class="col-12 mb-4" *ngIf="statistics">
                     <h3 class="customers__wrapper-heading">The average score of customers satisfaction out of 5 is: <span>{{statistics.customerSatisfaction.averageScore}}</span></h3>
                 </div>
-                <div class="col-12 col-md-6">
-                    <h4>Regions</h4>
-                    <div class="card">
+                <div class="col-md-12 mb-5">
+                    <h4>Regions:</h4>
+                    <div style="position: relative; height: 100%; width: 100%;">
                         <p-chart type="bar" [data]="basicData" [options]="basicOptions" />
                     </div>
                 </div>
-                <div class="col-12 col-md-6"></div>
+                <div class="col-md-12 mt-5">
+                    <h4>Monthly Scores:</h4>
+                    <div class="card">
+                        <p-chart type="bar" [data]="monthlyData" [options]="monthlyOptions" />
+                    </div>
+                </div>
             </div>
         </div>
     </div>

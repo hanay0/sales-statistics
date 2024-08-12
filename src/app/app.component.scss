@@ -1,14 +1,12 @@
+@import '../custom-mixins.scss';
 #intro__heading {
     p {
-        font-size: 80px;
+        @include responsive__font(25px, 45px, 70px);
         font-weight: 900;
         color: #606060;
         
         span {
-            background: linear-gradient(#90e184, #8c8cd4);
-            -webkit-background-clip: text;
-                    background-clip: text;
-            -webkit-text-fill-color: transparent;
+            @include gradient__text
         }
     }
 }

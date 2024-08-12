@@ -1,13 +1,15 @@
+@import '../../custom-mixins.scss';
+
 .customers__wrapper {
     .customers__wrapper-heading {
         color: #606060;
 
         span {
-            font-weight: 700;
-            background: linear-gradient(#90e184, #8c8cd4);
-                -webkit-background-clip: text;
-                        background-clip: text;
-                -webkit-text-fill-color: transparent;
+            @include gradient__text
         }
+    }
+
+    h4 {
+        @include gradient__text;
     }
 }

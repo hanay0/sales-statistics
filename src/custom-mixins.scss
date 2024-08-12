@@ -1,0 +1,21 @@
+// mixin for applying gradient text
+@mixin gradient__text {
+    font-weight: 700;
+    background: linear-gradient(#90e184, #8c8cd4);
+        -webkit-background-clip: text;
+                background-clip: text;
+        -webkit-text-fill-color: transparent;
+}
+
+// mixin to handle font size based on media qureies
+@mixin responsive__font($small-screen-size, $medium-screen-size, $large-screen-size) {
+    font-size: $large-screen-size;
+  
+    @media screen and (max-width: 992px) {
+      font-size: $medium-screen-size;
+    }
+  
+    @media screen and (max-width: 576px) {
+      font-size: $small-screen-size;
+    }
+}

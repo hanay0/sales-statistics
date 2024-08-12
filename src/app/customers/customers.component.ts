@@ -12,6 +12,12 @@ export class CustomersComponent implements OnInit {
   statistics!: Statistics;
   basicData: any;
   basicOptions: any;
+  regionScores: number[] = [];
+  regionNames: string[] = [];
+  monthlyData: any;
+  monthlyOptions: any;
+  monthlyScores: number[] = [];
+  monthlyDates: string[] = [];
 
 constructor(statsService: StatisticsServiceService) {
   this.statsService = statsService;
@@ -26,39 +32,31 @@ constructor(statsService: StatisticsServiceService) {
       const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
       const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
       // data for chart usage
-      const regionScores = this.statistics.customerSatisfaction.byRegion.map(region => region.regionScore);
-      const regionNames = this.statistics.customerSatisfaction.byRegion.map(region => region.regionName);
-      console.log(regionNames);
-      console.log(regionScores);
-      
-      // data for chart usage
-      
+      this.regionScores = this.statistics.customerSatisfaction.byRegion.map(region => region.regionScore);
+      this.regionNames = this.statistics.customerSatisfaction.byRegion.map(region => region.regionName);
+      // data for region chart usage
+
+      // data for monthly chart
+      this.monthlyScores = this.statistics.customerSatisfaction.monthlyScores.map(score => score.score);
+      this.monthlyDates = this.statistics.customerSatisfaction.monthlyScores.map(score => score.month);
+     // data for monthly chart
+     
+
       this.basicData = {
-        labels: regionNames,
+        labels: this.regionNames,
         datasets: [
             {
                 label: '', // disable label
-                data: regionScores,
+                data: this.regionScores,
                 borderWidth: 0,
-                backgroundColor: [
-                  documentStyle.getPropertyValue('--blue-500'),
-                  documentStyle.getPropertyValue('--yellow-500'), 
-                  documentStyle.getPropertyValue('--green-500'),
-                  documentStyle.getPropertyValue('--pink-500'),
-                  documentStyle.getPropertyValue('--cyan-500')
-                ],
-                hoverBackgroundColor: [
-                  documentStyle.getPropertyValue('--blue-400'), 
-                  documentStyle.getPropertyValue('--yellow-400'), 
-                  documentStyle.getPropertyValue('--green-400'),
-                  documentStyle.getPropertyValue('--pink-400'),
-                  documentStyle.getPropertyValue('--cyan-400')
-                ]
+                backgroundColor: "#eec137",
+                hoverBackgroundColor: "#edd48b"
             }
         ]
     };
 
     this.basicOptions = {
+        maintainAspectRatio: false,
           responsive: true,
           plugins: {
               legend: {
@@ -89,6 +87,56 @@ constructor(statsService: StatisticsServiceService) {
               }
           }
       };
-    })
+
+      // data and settings for monthly chart
+    this.monthlyData = {
+      labels: this.monthlyDates,
+      datasets: [
+          {
+              label: 'Monthly Satisfaction',
+              backgroundColor: "#4cd07d",
+              borderColor: "#eaeaea",
+              hoverBackgroundColor: "#42b56c",
+              data: this.monthlyScores
+          }
+      ]
+    };
+
+    this.monthlyOptions = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+          legend: {
+              labels: {
+                  color: "#000"
+              }
+          }
+      },
+      scales: {
+          x: {
+              ticks: {
+                  color: '#000',
+                  font: {
+                      weight: 500
+                  }
+              },
+              grid: {
+                  color: "#bddfbd",
+                  drawBorder: false
+              }
+          },
+          y: {
+              ticks: {
+                  color: "#000"
+              },
+              grid: {
+                  color: "#a23d6b",
+                  drawBorder: false
+              }
+          }
+
+      }
+    };
+    });
   }
 }
