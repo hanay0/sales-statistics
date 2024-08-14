@@ -46,7 +46,7 @@ constructor(statsService: StatisticsServiceService) {
         labels: this.regionNames,
         datasets: [
             {
-                label: '', // disable label
+                label: 'Regions', // disable label
                 data: this.regionScores,
                 borderWidth: 0,
                 backgroundColor: "#eec137",

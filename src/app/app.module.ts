@@ -9,7 +9,7 @@ import { CustomersComponent } from './customers/customers.component';
 import { ProductsComponent } from './products/products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartModule } from 'primeng/chart';
-
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +22,8 @@ import { ChartModule } from 'primeng/chart';
     BrowserAnimationsModule,
     HttpClientModule,
     TabMenuModule,
-    ChartModule
+    ChartModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

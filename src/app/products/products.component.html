@@ -1,1 +1,48 @@
-<p>products works!</p>
+<section class="products__wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Products Performance Statistics</h2>
+                <p>This statistics are about products performance and stock's level</p>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h3 class="mb-3">Top Selling Products</h3>
+                    <p-chart type="doughnut" [data]="topSellingData" [options]="topSellingoption" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th>Name </th>
+                                <th>Sales</th>
+                                <th>Category</th>
+                                <th>Rating</th>
+                                <th>Sold Units</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-product let-columns="columns">
+                            <tr>
+                                <td>
+                                    {{product.product}}
+                                </td>
+                                <td>
+                                    {{product.sales}}
+                                </td>
+                                <td>
+                                    {{product.category}}
+                                </td>
+                                <td>
+                                    {{product.rating}}
+                                </td>
+                                <td>
+                                    {{product.unitsSold}}
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
