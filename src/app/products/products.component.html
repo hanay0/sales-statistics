@@ -6,11 +6,21 @@
                 <p>This statistics are about products performance and stock's level</p>
             </div>
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <h3 class="mb-3">Top Selling Products</h3>
-                    <p-chart type="doughnut" [data]="topSellingData" [options]="topSellingoption" />
+                <div class="col-12 col-md-6 mb-5 product__wrapper-chart">
+                    <h3 class="mb-3">Top Selling Products:</h3>
+                    <div class="card flex justify-content-center p-3">
+                        <p-chart type="doughnut" [data]="topSellingData" [options]="topSellingoption" />
+                    </div>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-5 product__wrapper-chart">
+                    <h3 class="mb-3">Stocks Level:</h3>
+                    <div class="card flex justify-content-center p-3">
+                        <p-chart type="pie" [data]="stockData" [options]="stockOptions" />
+                    </div>
+                </div>
+
+                <div class="col-12 product__wrapper-chart">
+                    <h3>Sales by category:</h3>
                     <p-table [value]="products" [tableStyle]="{'min-width': '50rem'}">
                         <ng-template pTemplate="header" let-columns>
                             <tr>

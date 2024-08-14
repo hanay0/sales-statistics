@@ -1,0 +1,9 @@
+@import '../../custom-mixins.scss';
+
+.products__wrapper {
+    .product__wrapper-chart {
+        h3 {
+            @include gradient__text
+        }
+    }
+}

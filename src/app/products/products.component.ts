@@ -12,6 +12,9 @@ export class ProductsComponent implements OnInit {
   topSellingProducts!: [{product: string, sales: number}];
   stocksProducts: string[] = [];
   stockNumbers: number[] = [];
+  stockProducts!: any;
+  stockLevelProduct: string[] = [];
+  stockLevelAmount: number[]= [];
 
   // chart properties
   topSellingData: any;
@@ -22,6 +25,11 @@ export class ProductsComponent implements OnInit {
   products!: [{product: string, sales: number, category: string, rating: number, unitsSold: number}];
   cols!: {field: string, header: string}[];
   // table properties
+
+  // stock level properties
+    stockData: any;
+    stockOptions: any;
+  // stock level properties
 
   constructor(private statsService: StatisticsServiceService) {}
 
@@ -38,6 +46,13 @@ export class ProductsComponent implements OnInit {
       this.topSellingProducts.forEach((singleStock: { product: string, sales: number }) => {
         this.stocksProducts.push(singleStock.product);
         this.stockNumbers.push(singleStock.sales);
+      })
+
+      this.stockProducts = this.productInfo.productPerformance.stockLevels;
+      console.log(this.stockProducts);
+      this.stockProducts.forEach((singleStock: { product: string, stock: number }) => {
+        this.stockLevelProduct.push(singleStock.product);
+        this.stockLevelAmount.push(singleStock.stock);
       })
 
     // make the field and header dynamic due to the response 
@@ -77,6 +92,40 @@ export class ProductsComponent implements OnInit {
                   color: textColor
               }
           }
+        }
+      };
+
+      //stock level chart data
+      
+      this.stockData = {
+        labels: this.stockLevelProduct,
+        datasets: [
+            {
+                data: this.stockLevelAmount,
+                backgroundColor: [
+                  documentStyle.getPropertyValue('--blue-500'), 
+                  documentStyle.getPropertyValue('--yellow-500'), 
+                  documentStyle.getPropertyValue('--green-500')
+                ],
+                hoverBackgroundColor: [
+                  documentStyle.getPropertyValue('--blue-400'), 
+                  documentStyle.getPropertyValue('--yellow-400'), 
+                  documentStyle.getPropertyValue('--green-400')
+                ]
+            }
+        ]
+      };
+
+    this.stockOptions = {
+      maintainAspectRatio: false,
+      responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    usePointStyle: true,
+                    color: textColor
+                }
+            }
         }
       };
     })
